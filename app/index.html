@@ -34,8 +34,16 @@
           <h3>What do you like?</h3>
           <form id="input-form">
             <label for="recommend-1"></label>
-            <input type="text" name="recommend-1" placeholder="Music, Movie, TV Show, Book, Author, or Game" id="recommend-1">
-            <button id="more-button" type="button" class="btn btn-default""><span class="glyphicon glyphicon-plus"></span></button>
+            <input type="text" name="recommend-1" placeholder="Static page functionality only.  Click Search to see a mock search request." id="recommend-1" title="Static page functionality only.  Click Search to see a mock search request.">
+            <select name="drop-recommend-1">
+              <option value="music">Music</option>
+              <option value="movie">Movie</option>
+              <option value="show">Show</option>
+              <option value="book">Book</option>
+              <option value="author">Author</option>
+              <option value="game">Game</option>
+            </select>
+            <button id="more-button" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
             <input id="search-button" type="submit" value="Search">
           </form>
 
@@ -57,7 +65,7 @@
           <div id="tabs-movie">
 
             <!-- <div id="accordion-movie"> -->
-              <!-- <h3 class=".default-message">No Results!</h3> -->
+            <!-- <h3 class=".default-message">No Results!</h3> -->
             <!-- </div> -->
           </div>
           <div id="tabs-show">

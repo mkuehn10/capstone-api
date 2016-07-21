@@ -87,7 +87,7 @@ var tastekid = {
          },
          {
             'Name':'Foo Fighters',
-            'Type':'game',
+            'Type':'music',
             'wTeaser':'Foo Fighters is an American rock band, formed in Seattle in 1994. It was founded by Nirvana drummer Dave Grohl as a one-man project following the death of Kurt Cobain and the resulting dissolution of his previous band. The group got its name from the UFOs and various aerial phenomena that were reported by Allied aircraft pilots in World War II, which were known collectively as foo fighters.Prior to the release of Foo Fighters\' 1995 debut album Foo Fighters, which featured Grohl as the only official member, Grohl recruited bassist Nate Mendel and drummer William Goldsmith, both formerly of Sunny Day Real Estate, as well as Nirvana touring guitarist Pat Smear to complete the lineup. The band began with performances in Portland, Oregon. Goldsmith quit during the recording of the group\'s second album, The Colour and the Shape (1997), when most of the drum parts were re-recorded by Grohl himself. Smear\'s departure followed soon afterward, though he would rejoin them in 2005.',
             'wUrl':'http://en.wikipedia.org/wiki/Foo_Fighters_(band)',
             'yUrl':'https://www.youtube-nocookie.com/embed/SBjQ9tuuTJQ',
@@ -191,4 +191,27 @@ var tastekid = {
          }
       ]
    }
+}
+
+var bingImages = {
+   'John Frusciante': 'https://tse2.mm.bing.net/th?id=OIP.M5dfd5a8a842ddcda5566470d6492dd3cH2&pid=Api',
+   'Incubus': 'https://tse2.mm.bing.net/th?id=OIP.Md776ada2c72e42e97961f514a7f8db5cH0&pid=Api',
+   'Audioslave': 'https://tse2.mm.bing.net/th?id=OIP.M44bbfd7e19a995631916e36e3e953153o0&pid=Api',
+   'Sublime': 'https://tse4.mm.bing.net/th?id=OIP.M4d83b8e144117d8addf2ad9d5dfabb59o0&pid=Api',
+   'Pearl Jam': 'https://tse4.mm.bing.net/th?id=OIP.Mf27a76563889c77b6beb7544873f6ef6o0&pid=Api',
+   'Reservoir Dogs': 'https://tse2.mm.bing.net/th?id=OIP.M1e5a8d7872903c693b867c9482fd227cH0&pid=Api',
+   'Kill Bill': 'https://tse3.mm.bing.net/th?id=OIP.Md2cf217269c295dc586ebcbf3c6cd7fdH0&pid=Api',
+   'Jackie Brown': 'https://tse2.mm.bing.net/th?id=OIP.M1e1ea469d4a74aacc7acc36f71c345f5o0&pid=Api',
+   'Inglourious Basterds': 'https://tse2.mm.bing.net/th?id=OIP.M68b44dcbb5ae0ade8e3b6f50b1426a1dH2&pid=Api',
+   'From Dusk Till Dawn': 'https://tse2.mm.bing.net/th?id=OIP.M428237c1f054e7518f91ad4bb174d529H0&pid=Api',
+   'The Big Lebowski': 'https://tse4.mm.bing.net/th?id=OIP.Md8981e9dea6ec83ce9c610292bf0b86do0&pid=Api',
+   'Death Proof': 'https://tse4.mm.bing.net/th?id=OIP.Mdb3e66b08805ad58207aaf560d50af35o0&pid=Api',
+   'The Greatest Show On Earth': 'https://tse1.mm.bing.net/th?id=OIP.M8dc27776c9ade13408b2b3d7117c2920H0&pid=Api',
+   'Tractatus Logico-Philosophicus': 'https://tse1.mm.bing.net/th?id=OIP.Mbee8eb979ef9098e498898e52046c5e3o0&pid=Api',
+   'On The Origin Of Species': 'https://tse1.mm.bing.net/th?id=OIP.M8dc27776c9ade13408b2b3d7117c2920H0&pid=Api',
+   'Pale Blue Dot': 'https://tse2.mm.bing.net/th?id=OIP.Me87dd1312acea90f1c0e69a4ee40d99bo0&pid=Api',
+   'The Universe In A Nutshell': 'https://tse3.mm.bing.net/th?id=OIP.Med3fa29c96502c55842a5c90f5128321o0&pid=Api',
+   'Hyperspace': 'https://tse3.mm.bing.net/th?id=OIP.Mac90e6748ec84e9016b50a59016ddd5bo0&pid=Api',
+   'Brian Greene': 'https://tse1.mm.bing.net/th?id=OIP.M2bd6759ea6d0e37728d1f103cc11ac3eo0&pid=Api',
+   'Foo Fighters': 'https://tse4.mm.bing.net/th?id=OIP.M576b56df0ebc19c751f567860e88d75co0&pid=Api'
 }
