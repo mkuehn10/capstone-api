@@ -3,7 +3,8 @@
   "private": true,
   "dependencies": {
     "bootstrap": "~3.3.5",
-    "jquery-ui": "^1.12.0"
+    "jquery-ui": "^1.12.0",
+    "jasmine-core": "jasmine#^2.4.1"
   },
   "overrides": {
     "bootstrap": {
@@ -17,7 +18,15 @@
     "jquery-ui": {
       "main": [
         "jquery-ui.js",
-        "themes/smoothness/*"
+        "themes/custom/*"
+      ]
+    },
+    "jasmine-core": {
+      "main": [
+        "lib/jasmine-core/jasmine.css",
+        "lib/jasmine-core/jasmine.js",
+        "lib/jasmine-core/jasmine-html.js",
+        "lib/jasmine-core/boot.js"
       ]
     }
   },
