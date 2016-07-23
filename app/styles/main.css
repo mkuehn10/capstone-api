@@ -135,6 +135,9 @@ form select {
     display: block;
 }
 
+#tabs-search {
+    margin-top: 25px;
+}
 .display-tab {
     display: none;
     margin-top: 25px;
@@ -144,6 +147,12 @@ form select {
     min-height: 100%;
     color: white;
     /*overflow: hidden;*/
+}
+
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size: 20px;
+    }
 }
 
 @media screen and (min-width: 768px) {

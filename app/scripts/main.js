@@ -6,15 +6,15 @@
 //     $('.display-tab').hide();
 //     $('#tabs-' + $(event.target).attr('id')).css('display', 'inline-block');
 // });
-$("#menu-toggle").click(function(e) {
+$('#menu-toggle').click(function(e) {
     e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
+    $('#wrapper').toggleClass('toggled');
 });
-$("#in-menu-toggle").click(function(e) {
+$('#in-menu-toggle').click(function(e) {
     e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
+    $('#wrapper').toggleClass('toggled');
 });
-$("#new-search").click(function(e) {
+$('#new-search').click(function(e) {
     e.preventDefault();
     $('.display-tab').hide();
     $('#tabs-search').show();
