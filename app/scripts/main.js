@@ -17,6 +17,9 @@ $('#new-search').click(function(e) {
     }
 });
 
+$('.tester').click(function() {
+    $('.jasmine_html-reporter').toggle();
+});
 
 function RecommendedItem(name, type, imgURL, wikiInfo, wikiURL) {
     var self = this;
@@ -78,15 +81,16 @@ function ViewModel() {
     self.removeSearchBox = function(box) {
         self.searchBox.remove(box);
     };
+
     self.searchRecommendations = function() {
         /* Remove previous recommendations */
         self.recommendations([]);
         /* Request TasteKid Recommendations */
         self.requestRecommendations();
-        console.log(self.searchText());
+
         setTimeout(function() {
             self.getRecommendationsImages();
-        }, 1);
+        }, 500);
 
         $('.display-tab').hide();
         $('#tabs-search').hide();
@@ -97,15 +101,12 @@ function ViewModel() {
     };
 
     self.wikiInfoRequest = function(recommendation) {
-
-
         var params = {
             action: 'opensearch',
             search: recommendation.name,
             format: 'json',
             limit: '1'
-        }
-
+        };
         $.ajax({
             url: 'https://en.wikipedia.org/w/api.php?',
             data: params,
@@ -116,11 +117,11 @@ function ViewModel() {
             self.currentWikiURL(result[3][0]);
             self.currentName(recommendation.name);
             $('#tooltip').hide();
-            $('#tooltip').fadeIn("slow", function() {});
+            $('#tooltip').fadeIn('slow', function() {});
         })
         .fail(function(jqXHR, error) {
-                 console.log('something went wrong');
-             });
+            console.log('something went wrong');
+        });
     };
 
     self.requestRecommendations = function() {
@@ -128,8 +129,6 @@ function ViewModel() {
         $.each(results, function(n, result) {
             self.recommendations.push(new RecommendedItem(result.Name, result.Type, '', '', ''));
         });
-
-
         // var params = {
         //     q: self.searchText,
         //     k: tasteKidAPIKey,
@@ -137,30 +136,20 @@ function ViewModel() {
         //     limit: 20
         // };
         // $.ajax({
-        //         url: 'https://www.tastekid.com/api/similar',
-        //         data: params,
-        //         dataType: 'jsonp'
-        //     })
-        //     .done(function(result) {
-        //         //self.tasteKidResults(result.Similar.Results);
-        //         var results = result.Similar.Results;
-        //         $.each(results, function(n, result) {
-        //             self.recommendations.push(new RecommendedItem(result.Name, result.Type, ''));
+        //     url: 'https://www.tastekid.com/api/similar',
+        //     data: params,
+        //     dataType: 'jsonp'
+        // })
+        // .done(function(result) {
+        //     var results = result.Similar.Results;
+        //     $.each(results, function(n, result) {
+        //         self.recommendations.push(new RecommendedItem(result.Name, result.Type, ''));
 
-        //         });
-        //         // console.log(self.recommendations());
-        //         // results = result.Similar.Results;
-        //         // $.each(results, function(n, result) {
-        //         //     setTimeout(function() {
-        //         //         console.log(result.Name + ' is a ' + result.Type);
-        //         //         addAccordionToTabs(n, result);
-        //         //     }, 175  * n)
-        //         // });
-        //         // $( '#tabs' ).tabs( 'option', 'active', 0);
-        //     })
-        //     .fail(function(jqXHR, error) {
-        //         console.log('something went wrong');
         //     });
+        // })
+        // .fail(function(jqXHR, error) {
+        //     console.log('something went wrong');
+        // });
     };
 
     self.getRecommendationsImages = function() {
@@ -172,42 +161,34 @@ function ViewModel() {
     };
 
     self.bingImageRequest = function(recommendation) {
-        // bingImageResults[result.Name]
         recommendation.imgURL(bingImages[recommendation.name]);
-
-        // recommendation.imgURL = bingImages[recommendation.name];
-
         // var params = {
         //     'q': recommendation.name + ' ' + recommendation.type,
         //     'count': 1
         // };
-        // // console.log("Sending ajax....");
         // $.ajax({
-        //         type: "GET",
-        //         url: 'https://api.cognitive.microsoft.com/bing/v5.0/images/search',
-        //         data: params,
-        //         dataType: 'json',
-        //         // jsonpCallback: 'searchCompleted',
-        //         headers: {
-        //             'X-Requested-With': 'XMLHttpRequest',
-        //             'Content-Type': 'application/json',
-        //             'Ocp-Apim-Subscription-Key': bingAPIKey
-        //         }
-        //     })
-        //     .done(function(response) {
+        //     type: "GET",
+        //     url: 'https://api.cognitive.microsoft.com/bing/v5.0/images/search',
+        //     data: params,
+        //     dataType: 'json',
+        //     headers: {
+        //         'X-Requested-With': 'XMLHttpRequest',
+        //         'Content-Type': 'application/json',
+        //         'Ocp-Apim-Subscription-Key': bingAPIKey
+        //     }
+        // })
+        // .done(function(response) {
         //         recommendation.imgURL(response.value[0].thumbnailUrl); // = response.value[0].thumbnailUrl;
-        //     });
+        //     })
+        // .fail(function(jqXHR, error) {
+        //     console.log('something went wrong');
+        // });
     };
 
     self.imageClick = function(target) {
-        console.log(target);
         self.wikiInfoRequest(target);
     }
 }
 
 var MyViewModel = new ViewModel();
 ko.applyBindings(MyViewModel);
-
-$('.tester').click(function() {
-    $('.jasmine_html-reporter').toggle();
-});

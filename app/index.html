@@ -5,20 +5,21 @@
     <meta charset="utf-8">
     <meta name="description" content="Search for recommendations based on what you already like!">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>capstone api</title>
+    <title>Recommendation Searcher</title>
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
     <!-- Place favicon.ico in the root directory -->
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="/bower_components/jasmine-core/lib/jasmine-core/jasmine.css" />
+    <!-- <link rel="stylesheet" href="/bower_components/jasmine-core/lib/jasmine-core/jasmine.css" /> -->
     <!-- endbower -->
     <!-- endbuild -->
     <link href="styles/bootstrap.min.css" rel="stylesheet">
     <!-- build:css styles/main.css -->
     <link href="styles/simple-sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
-    <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+
     <!-- endbuild -->
 </head>
 
@@ -26,7 +27,7 @@
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
       <![endif]-->
-    <div id="wrapper">
+      <div id="wrapper">
         <!-- Sidebar -->
         <button id="menu-toggle" type="button" class="btn btn-default">
             <span class="glyphicon glyphicon-align-justify"></span>
@@ -82,37 +83,37 @@
                     </script>
                 </div>
                 <div id="tooltip" class="display-tab shadow">
-                <p data-bind="text: $root.currentWikiInfo"></p>
+                    <p data-bind="text: $root.currentWikiInfo"></p>
                     <a data-bind="attr: {href: $root.currentWikiURL}, text: 'More information on ' + currentName()" target="new">More info</a>
-                    </div>
+                </div>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-        <button class="tester btn btn-warning text-center">Show/Hide Jasmine Testing</button>
+        <!-- <button class="tester btn btn-warning text-center">Show/Hide Jasmine Testing</button> -->
     </div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
-    (function(b, o, i, l, e, r) {
-        b.GoogleAnalyticsObject = l;
-        b[l] || (b[l] =
-            function() {
-                (b[l].q = b[l].q || []).push(arguments)
-            });
-        b[l].l = +new Date;
-        e = o.createElement(i);
-        r = o.getElementsByTagName(i)[0];
-        e.src = 'https://www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e, r)
-    }(window, document, 'script', 'ga'));
-    ga('create', 'UA-80275020-1');
-    ga('send', 'pageview');
+        (function(b, o, i, l, e, r) {
+            b.GoogleAnalyticsObject = l;
+            b[l] || (b[l] =
+                function() {
+                    (b[l].q = b[l].q || []).push(arguments)
+                });
+            b[l].l = +new Date;
+            e = o.createElement(i);
+            r = o.getElementsByTagName(i)[0];
+            e.src = 'https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-80275020-1');
+        ga('send', 'pageview');
     </script>
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <script src="/bower_components/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+    <!-- <script src="/bower_components/jasmine-core/lib/jasmine-core/jasmine.js"></script>
     <script src="/bower_components/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
-    <script src="/bower_components/jasmine-core/lib/jasmine-core/boot.js"></script>
+    <script src="/bower_components/jasmine-core/lib/jasmine-core/boot.js"></script> -->
     <script src="/bower_components/knockout/dist/knockout.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
@@ -134,7 +135,7 @@
     <!-- build:js scripts/main.js -->
     <script src="scripts/static_data.js"></script>
     <script src="scripts/main.js"></script>
-    <script src="spec/test.js"></script>
+    <!-- <script src="spec/test.js"></script> -->
     <!-- endbuild -->
 </body>
 
