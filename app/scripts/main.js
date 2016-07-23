@@ -1,13 +1,12 @@
 // https://www.tastekid.com/api/similar?q=music:red+hot+chili+peppers%2C+movie:pulp+fiction%2C+book:the+elegant+universe&k=232795-APIProje-WARMTIA1&info=1
 // $(function() {
 
-    $('.display-btn').click(function(event) {
-        console.log($(event.target).attr('id'));
-        $('.display-tab').hide();
-        $('#tabs-' + $(event.target).attr('id')).show();
-
-        // $('#tabs-music').show();
-    });
+// $('.display-btn').click(function(event) {
+//     console.log($(event.target).attr('id'));
+//     $('.display-tab').hide();
+//     $('#tabs-' + $(event.target).attr('id')).css('display', 'inline-block');
+// });
+var bingImageResults = bingImages;
 function RecommendedItem(name, type, imgURL) {
     var self = this;
     self.name = name;
@@ -20,7 +19,7 @@ function ViewModel() {
 
     var self = this;
 
-    self.availableCategories = ['Music', 'Movie', 'TV Show', 'Book', 'Author', 'Game'];
+    self.availableCategories = ['Music', 'Movie', 'Show', 'Book', 'Author', 'Game'];
 
     self.searchBox = ko.observableArray([{ query: ko.observable(''), category: ko.observable('') }]);
 
@@ -34,49 +33,35 @@ function ViewModel() {
         return queryText.join(',');
     });
 
-    // self.numberOfMusicResults = function() {
-    //     ko.utils.arrayFilter(self.recommendations(), function(item) {
-    //         console.log(item.type === 'music');
-    //         return item.type == 'music';
-    //         // console.log(item);
-    //     });
-    // }
-    self.numberOfResults = function (category) {
+    self.clickTab = function(event) {
+            $('.display-tab').hide();
+            $('#tabs-' + event.toLowerCase()).css('display', 'inline-block');
+        }
+
+    self.filterResults = function(category) {
         return ko.utils.arrayFilter(self.recommendations(), function(item) {
-            // console.log(item.type === 'music');
-            return item.type == category;
-            // console.log(item);
-        }).length;
+            return item.type === category.toLowerCase();
+        });
     };
 
-    // self.numberOfMusicResults = ko.computed(function () {
-    //     return ko.utils.arrayFilter(self.recommendations(), function(item) {
-    //         console.log(item.type === 'music');
-    //         return item.type == 'music';
-    //         // console.log(item);
-    //     }).length;
-    // });
-
     self.addSearchBox = function() {
-        // console.log("addSearchBox");
         self.searchBox.push({ query: ko.observable(''), category: ko.observable('') });
     };
 
+    self.removeSearchBox = function(box) {
+        self.searchBox.remove(box);
+    };
     self.searchRecommendations = function() {
         /* Remove previous recommendations */
         self.recommendations([]);
         /* Request TasteKid Recommendations */
         self.requestRecommendations();
-
-        // console.log("Knockout Searched for recommendations!");
         console.log('Search Text: ' + self.searchText());
         setTimeout(function() {
             self.getRecommendationsImages();
-        }, 750);
-
-
-
-
+        }, 1);
+        $('.display-tab').hide();
+        $('#tabs-music').css('display', 'inline-block');
 
     };
 
@@ -123,14 +108,11 @@ function ViewModel() {
     }
 
     self.getRecommendationsImages = function() {
-        // console.log("Getting images");
-        // console.log(self.recommendations());
 
         $.each(self.recommendations(), function(n, recommendation) {
-            console.log(recommendation.name + ' ' + recommendation.type)
             setTimeout(function() {
                 self.bingImageRequest(recommendation);
-            }, 175 * n);
+            }, 150 * n);
 
         });
 
@@ -165,28 +147,30 @@ function ViewModel() {
 var MyViewModel = new ViewModel();
 ko.applyBindings(MyViewModel);
 
+$('.tester').click(function() {
+    $('.jasmine_html-reporter').toggle();
+});
 
-
-var image;
+// var image;
 
 // $('#tabs').tabs();
 
-var tasteKidResults = tastekid.Similar.Results;
-var bingImageResults = bingImages;
+// var tasteKidResults = tastekid.Similar.Results;
 
-$('#input-form').submit(function(event) {
-    event.preventDefault();
-    getResults();
-})
 
-function getResults() {
-    $.each(tasteKidResults, function(n, result) {
-        setTimeout(function() {
-            console.log(result.Name + ' is a ' + result.Type);
-            addAccordionToTabs(n, result);
-        }, 175 * n)
-    });
-    $('#tabs').tabs('option', 'active', 0);
+// $('#input-form').submit(function(event) {
+//     event.preventDefault();
+//     getResults();
+// })
+
+// function getResults() {
+//     $.each(tasteKidResults, function(n, result) {
+//         setTimeout(function() {
+//             console.log(result.Name + ' is a ' + result.Type);
+//             addAccordionToTabs(n, result);
+//         }, 175 * n)
+//     });
+//     $('#tabs').tabs('option', 'active', 0);
 
     // Disabled Ajax call to TasteKid
     // var params = {
@@ -213,11 +197,11 @@ function getResults() {
     // .fail(function(jqXHR, error) {
     //     console.log('something went wrong');
     // });
-}
+//}
 
-function addAccordionToTabs(n, result) {
-    image = bingImageResults[result.Name];
-    $('#tabs-' + result.Type).append('<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 pic-container"><img class="img-responsive" src="' + image + '"><span class="caption">' + result.Name + '</span></div>');
+// function addAccordionToTabs(n, result) {
+//     image = bingImageResults[result.Name];
+//     $('#tabs-' + result.Type).append('<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 pic-container"><img class="img-responsive" src="' + image + '"><span class="caption">' + result.Name + '</span></div>');
 
     // Disabled Ajax Call Below
     // var params = {
@@ -242,13 +226,11 @@ function addAccordionToTabs(n, result) {
 
     //     $('#tabs-' + result.Type).append('<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 pic-container"><img class="img-responsive" src="' + image + '"><span class="caption">' + result.Name + '</span></div>');
     // });
-}
+//}
 
-function searchCompleted(response) {
-    console.log(response);
-}
+// function searchCompleted(response) {
+//     console.log(response);
+// }
 
-$('.tester').click(function() {
-    $('.jasmine_html-reporter').toggle();
-});
+
 // });

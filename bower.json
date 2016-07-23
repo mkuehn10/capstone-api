@@ -3,7 +3,6 @@
   "private": true,
   "dependencies": {
     "bootstrap": "~3.3.5",
-    "jquery-ui": "^1.12.0",
     "jasmine-core": "jasmine#^2.4.1",
     "knockout": "^3.4.0"
   },
@@ -14,12 +13,6 @@
         "dist/css/bootstrap.css",
         "dist/js/bootstrap.js",
         "dist/fonts/*"
-      ]
-    },
-    "jquery-ui": {
-      "main": [
-        "jquery-ui.js",
-        "themes/custom/*"
       ]
     },
     "jasmine-core": {
