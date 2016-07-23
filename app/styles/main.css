@@ -9,11 +9,30 @@
 /* Space out content a bit */
 
 body {
-    padding-top: 20px;
+    padding-top: 0px;
     padding-bottom: 20px;
     background-color: midnightblue;
-    color: brown;
+
     font-weight: bold;
+}
+
+#menu-toggle {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    z-index: 1001;
+    color: gray;
+    background-color: black;
+    border-color: black;
+}
+#page-content-wrapper {
+    color: white;
+}
+select {
+    color: gray;
+}
+.sidebar-nav {
+    margin-top: 50px;
 }
 
 .glyphicon {
@@ -60,7 +79,7 @@ form select {
     width: 100%;
     height: 100%;
     /*height: 500px;*/
-    background-color: wheat;
+    background-color: black;
 }
 
 .ui-tabs-tab {
@@ -79,13 +98,15 @@ form select {
     font-size: 12px;
     text-align: center;
 }
+
+
 /*.col-centered {
     margin: auto;
     max-width: 250px;
 }*/
 
 .pic-container {
-    height: 125px;
+    height: 150px;
     width: 125px;
     /*object-fit: cover;*/
     /*margin-bottom: 5px;
@@ -104,6 +125,7 @@ form select {
     border-radius: 100%;
     margin: 0 auto;
 }
+
 .pic-container .caption {
     height: 100%;
     min-height: 100%;
@@ -112,12 +134,15 @@ form select {
 #more-button {
     display: block;
 }
+
 .display-tab {
     display: none;
-    background-color: wheat;
+    margin-top: 25px;
+    /*background-color: midnightblue;*/
     width: 100%;
     height: 100%;
     min-height: 100%;
+    color: white;
     /*overflow: hidden;*/
 }
 
@@ -161,6 +186,7 @@ form select {
         width: 200px;
     }*/
 }
+
 
 /*@media screen and (min-width: 1200px) {
     .container {

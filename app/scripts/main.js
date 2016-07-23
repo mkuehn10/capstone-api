@@ -6,7 +6,23 @@
 //     $('.display-tab').hide();
 //     $('#tabs-' + $(event.target).attr('id')).css('display', 'inline-block');
 // });
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
+$("#in-menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
+$("#new-search").click(function(e) {
+    e.preventDefault();
+    $('.display-tab').hide();
+    $('#tabs-search').show();
+
+});
+
 var bingImageResults = bingImages;
+
 function RecommendedItem(name, type, imgURL) {
     var self = this;
     self.name = name;
@@ -34,9 +50,10 @@ function ViewModel() {
     });
 
     self.clickTab = function(event) {
-            $('.display-tab').hide();
-            $('#tabs-' + event.toLowerCase()).css('display', 'inline-block');
-        }
+        $('#tabs-search').hide();
+        $('.display-tab').hide();
+        $('#tabs-' + event.toLowerCase()).css('display', 'inline-block');
+    }
 
     self.filterResults = function(category) {
         return ko.utils.arrayFilter(self.recommendations(), function(item) {
@@ -61,6 +78,7 @@ function ViewModel() {
             self.getRecommendationsImages();
         }, 1);
         $('.display-tab').hide();
+        $('#tabs-search').hide();
         $('#tabs-music').css('display', 'inline-block');
 
     };
@@ -172,60 +190,60 @@ $('.tester').click(function() {
 //     });
 //     $('#tabs').tabs('option', 'active', 0);
 
-    // Disabled Ajax call to TasteKid
-    // var params = {
-    //     q: $('#recommend-1').val(),
-    //     k: tasteKidAPIKey,
-    //     info: 1,
-    //     limit: 20
-    // };
-    // $.ajax({
-    //     url: 'https://www.tastekid.com/api/similar',
-    //     data: params,
-    //     dataType: 'jsonp'
-    // })
-    // .done(function(result) {
-    //     results = result.Similar.Results;
-    //     $.each(results, function(n, result) {
-    //         setTimeout(function() {
-    //             console.log(result.Name + ' is a ' + result.Type);
-    //             addAccordionToTabs(n, result);
-    //         }, 175  * n)
-    //     });
-    //     $( '#tabs' ).tabs( 'option', 'active', 0);
-    // })
-    // .fail(function(jqXHR, error) {
-    //     console.log('something went wrong');
-    // });
+// Disabled Ajax call to TasteKid
+// var params = {
+//     q: $('#recommend-1').val(),
+//     k: tasteKidAPIKey,
+//     info: 1,
+//     limit: 20
+// };
+// $.ajax({
+//     url: 'https://www.tastekid.com/api/similar',
+//     data: params,
+//     dataType: 'jsonp'
+// })
+// .done(function(result) {
+//     results = result.Similar.Results;
+//     $.each(results, function(n, result) {
+//         setTimeout(function() {
+//             console.log(result.Name + ' is a ' + result.Type);
+//             addAccordionToTabs(n, result);
+//         }, 175  * n)
+//     });
+//     $( '#tabs' ).tabs( 'option', 'active', 0);
+// })
+// .fail(function(jqXHR, error) {
+//     console.log('something went wrong');
+// });
 //}
 
 // function addAccordionToTabs(n, result) {
 //     image = bingImageResults[result.Name];
 //     $('#tabs-' + result.Type).append('<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 pic-container"><img class="img-responsive" src="' + image + '"><span class="caption">' + result.Name + '</span></div>');
 
-    // Disabled Ajax Call Below
-    // var params = {
-    //     'q': result.Name + ' ' + result.Type,
-    //     'count': 1
-    // };
-    // // console.log("Sending ajax....");
-    // $.ajax({
-    //     type: "GET",
-    //     url: 'https://api.cognitive.microsoft.com/bing/v5.0/images/search',
-    //     data: params,
-    //     dataType: 'json',
-    //     // jsonpCallback: 'searchCompleted',
-    //     headers: {
-    //         'X-Requested-With': 'XMLHttpRequest',
-    //         'Content-Type': 'application/json',
-    //         'Ocp-Apim-Subscription-Key': '0c98394a5a75426a8872510d12a639ea'
-    //     }
-    // })
-    // .done(function(response) {
-    //     image = response.value[0].thumbnailUrl;
+// Disabled Ajax Call Below
+// var params = {
+//     'q': result.Name + ' ' + result.Type,
+//     'count': 1
+// };
+// // console.log("Sending ajax....");
+// $.ajax({
+//     type: "GET",
+//     url: 'https://api.cognitive.microsoft.com/bing/v5.0/images/search',
+//     data: params,
+//     dataType: 'json',
+//     // jsonpCallback: 'searchCompleted',
+//     headers: {
+//         'X-Requested-With': 'XMLHttpRequest',
+//         'Content-Type': 'application/json',
+//         'Ocp-Apim-Subscription-Key': '0c98394a5a75426a8872510d12a639ea'
+//     }
+// })
+// .done(function(response) {
+//     image = response.value[0].thumbnailUrl;
 
-    //     $('#tabs-' + result.Type).append('<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 pic-container"><img class="img-responsive" src="' + image + '"><span class="caption">' + result.Name + '</span></div>');
-    // });
+//     $('#tabs-' + result.Type).append('<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 pic-container"><img class="img-responsive" src="' + image + '"><span class="caption">' + result.Name + '</span></div>');
+// });
 //}
 
 // function searchCompleted(response) {
