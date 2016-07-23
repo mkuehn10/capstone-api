@@ -18,16 +18,22 @@ $('#new-search').click(function(e) {
 });
 
 
-function RecommendedItem(name, type, imgURL) {
+function RecommendedItem(name, type, imgURL, wikiInfo, wikiURL) {
     var self = this;
     self.name = name;
     self.type = type;
     self.imgURL = ko.observable(imgURL);
+    self.wikiInfo = wikiInfo;
+    self.wikiURL = wikiURL;
 }
 
 function ViewModel() {
 
     var self = this;
+
+    self.currentWikiInfo = ko.observable('');
+    self.currentWikiURL = ko.observable('');
+    self.currentName = ko.observable('');
 
     self.availableCategories = ['Music', 'Movie', 'Show', 'Book', 'Author', 'Game'];
 
@@ -81,6 +87,7 @@ function ViewModel() {
         setTimeout(function() {
             self.getRecommendationsImages();
         }, 1);
+
         $('.display-tab').hide();
         $('#tabs-search').hide();
         if ($(window).width() < 768) {
@@ -89,10 +96,37 @@ function ViewModel() {
         $('#tabs-music').css('display', 'inline-block');
     };
 
+    self.wikiInfoRequest = function(recommendation) {
+
+
+        var params = {
+            action: 'opensearch',
+            search: recommendation.name,
+            format: 'json',
+            limit: '1'
+        }
+
+        $.ajax({
+            url: 'https://en.wikipedia.org/w/api.php?',
+            data: params,
+            dataType: 'jsonp'
+        })
+        .done(function(result) {
+            self.currentWikiInfo(result[2][0]);
+            self.currentWikiURL(result[3][0]);
+            self.currentName(recommendation.name);
+            $('#tooltip').hide();
+            $('#tooltip').fadeIn("slow", function() {});
+        })
+        .fail(function(jqXHR, error) {
+                 console.log('something went wrong');
+             });
+    };
+
     self.requestRecommendations = function() {
         var results = tastekid.Similar.Results;
         $.each(results, function(n, result) {
-            self.recommendations.push(new RecommendedItem(result.Name, result.Type, ''));
+            self.recommendations.push(new RecommendedItem(result.Name, result.Type, '', '', ''));
         });
 
 
@@ -140,6 +174,9 @@ function ViewModel() {
     self.bingImageRequest = function(recommendation) {
         // bingImageResults[result.Name]
         recommendation.imgURL(bingImages[recommendation.name]);
+
+        // recommendation.imgURL = bingImages[recommendation.name];
+
         // var params = {
         //     'q': recommendation.name + ' ' + recommendation.type,
         //     'count': 1
@@ -161,6 +198,11 @@ function ViewModel() {
         //         recommendation.imgURL(response.value[0].thumbnailUrl); // = response.value[0].thumbnailUrl;
         //     });
     };
+
+    self.imageClick = function(target) {
+        console.log(target);
+        self.wikiInfoRequest(target);
+    }
 }
 
 var MyViewModel = new ViewModel();

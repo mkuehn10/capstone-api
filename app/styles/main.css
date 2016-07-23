@@ -5,13 +5,11 @@
     padding: 0.2em 0;
 }
 
-
-/* Space out content a bit */
-
 body {
     padding-top: 0px;
     padding-bottom: 20px;
     background-color: dimgray;
+    font-family: 'Bungee', cursive;
     font-weight: bold;
 }
 
@@ -24,21 +22,26 @@ body {
     background-color: black;
     border-color: black;
 }
+
 #page-content-wrapper {
     color: white;
 }
+
 .glyphicon-remove {
     color: red;
 }
+
 .glyphicon-plus {
     transform: translateY(0.1em);
     color: limegreen;
 }
+
 .add-term {
     color: limegreen;
     font-weight: bold;
     font-size: 16px;
 }
+
 .add-term:hover,
 .add-term:visited,
 .add-term:active,
@@ -48,12 +51,34 @@ body {
     text-decoration: none;
     outline: none;
 }
+
 .form-group {
-    padding: 0;
+    padding: 2px;
+}
+#tabs-search h2 {
+    color: crimson;
+}
+#tabs-search h1, #tabs h1 {
+    color: gold;
+}
+#form-id select.form-control {
+    font-size: 13px;
+    padding: 0px 10px;
+}
+.shadow {
+    margin-bottom: 25px;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+#demo-button {
+    transform: translateY(-0.25em);
 }
 select {
     color: gray;
 }
+
 .sidebar-nav {
     margin-top: 50px;
 }
@@ -72,41 +97,8 @@ form select {
     display: inline;
 }
 
-
-/*form div {
-    display: inline-block;
-    }*/
-
 #input {
     margin-bottom: 15px;
-}
-
-
-/*#recommend-1 {
-    width: 65%;
-    }*/
-
-
-/*.ui-accordion-content {
-    min-height: 149px;
-    max-height: 150px;
-    }*/
-
-.
-/*ui-accordion .ui-accordion-content {
-    padding: 2px;
-    }*/
-
-.ui-tabs {
-    /*float: left;*/
-    width: 100%;
-    height: 100%;
-    /*height: 500px;*/
-    background-color: black;
-}
-
-.ui-tabs-tab {
-    min-width: 133px;
 }
 
 .jasmine_html-reporter {
@@ -123,30 +115,26 @@ form select {
 }
 
 
-/*.col-centered {
-    margin: auto;
-    max-width: 250px;
-}*/
-
 .pic-container {
     height: 150px;
     width: 125px;
-    /*object-fit: cover;*/
-    /*margin-bottom: 5px;
-    padding: 2px;
-    margin-right: 3px;
-    margin-left: 3px;*/
     padding: 0;
     margin: 0 auto;
     text-align: center;
+
 }
 
 .pic-container img {
     height: 100px;
     width: 100px;
-    /*object-fit: cover;*/
     border-radius: 100%;
     margin: 0 auto;
+    object-fit: cover;
+}
+
+.pic-container img:hover {
+    border: 4px solid yellow;
+    cursor: pointer;
 }
 
 .pic-container .caption {
@@ -161,6 +149,7 @@ form select {
 #tabs-search {
     margin-top: 25px;
 }
+
 .display-tab {
     display: none;
     margin-top: 25px;
@@ -170,6 +159,32 @@ form select {
     min-height: 100%;
     color: white;
     /*overflow: hidden;*/
+}
+
+#tooltip {
+    background-color: gold;
+    padding: 5px;
+    color: black;
+    height: 100%;
+    width: 100%;
+    /*border-radius: 15px;*/
+    opacity: 0.75;
+}
+
+body > div.jasmine_html-reporter {
+    z-index: 1001;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.tester {
+    position: fixed;
+    bottom: 96px;
+    left: 0;
+    z-index: 1002;
 }
 
 @media screen and (max-width: 500px) {
