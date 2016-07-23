@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="/bower_components/jasmine-core/lib/jasmine-core/jasmine.css" />
     <!-- endbower -->
     <!-- endbuild -->
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/simple-sidebar.css" rel="stylesheet">
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
@@ -23,9 +25,51 @@
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
       <![endif]-->
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
+                </li>
+                <div data-bind="foreach: availableCategories">
+                    <li>
+                        <a href="#" class="display-btn" data-bind="attr: {id: $data.toLowerCase()}, text: $data + ' (' + $root.filterResults($data).length + ')', click: $root.clickTab"></a>
+                    </li>
+                </div>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Simple Sidebar</h1>
+                        <form class="" data-bind="submit: searchRecommendations">
+                            <div data-bind="foreach: searchBox">
+                                <p id="form-id">
+                                    <input class="" type="text" data-bind="value: query" placeholder="Movie, etc." />
+                                    <select class="" data-bind="options: $root.availableCategories, value: category"></select>
+                                    <button class="btn btn-danger btn-xs" data-bind="click: $root.removeSearchBox, visible: $root.searchBox().length > 1"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                                </p>
+                            </div>
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </form>
+                        <button data-bind="click: addSearchBox, visible: searchBox().length < 5" type="button" class="btn btn-default">Add</button>
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
     <div class="container">
         <!-- <h2># of search boxes: <span data-bind="text: searchBox().length"></span></h2> -->
-        <form class="" data-bind="submit: searchRecommendations">
+        <!-- <form class="" data-bind="submit: searchRecommendations">
             <div data-bind="foreach: searchBox">
                 <p id="form-id">
                     <input class="" type="text" data-bind="value: query" placeholder="Movie, etc." />
@@ -34,7 +78,7 @@
                 </p>
             </div>
             <button class="btn btn-primary" type="submit">Search</button>
-        </form>
+        </form> -->
         <button data-bind="click: addSearchBox, visible: searchBox().length < 5" type="button" class="btn btn-default">Add</button>
         <nav class="navbar navbar-inverse" role="navigation">
             <div class="container">
@@ -101,6 +145,7 @@
     <script src="/bower_components/knockout/dist/knockout.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+    <script src="scripts/bootstrap.min.js"></script>
     <!-- build:js scripts/plugins.js -->
     <script src="/bower_components/bootstrap/js/affix.js"></script>
     <script src="/bower_components/bootstrap/js/alert.js"></script>
