@@ -11,8 +11,7 @@
 body {
     padding-top: 0px;
     padding-bottom: 20px;
-    background-color: midnightblue;
-
+    background-color: dimgray;
     font-weight: bold;
 }
 
@@ -27,6 +26,30 @@ body {
 }
 #page-content-wrapper {
     color: white;
+}
+.glyphicon-remove {
+    color: red;
+}
+.glyphicon-plus {
+    transform: translateY(0.1em);
+    color: limegreen;
+}
+.add-term {
+    color: limegreen;
+    font-weight: bold;
+    font-size: 16px;
+}
+.add-term:hover,
+.add-term:visited,
+.add-term:active,
+.add-term:focus,
+.add-term:focus:active {
+    color: limegreen;
+    text-decoration: none;
+    outline: none;
+}
+.form-group {
+    padding: 0;
 }
 select {
     color: gray;
