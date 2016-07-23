@@ -69,7 +69,7 @@ function ViewModel() {
         self.requestRecommendations();
 
         // console.log("Knockout Searched for recommendations!");
-        console.log("Search Text: " + self.searchText());
+        console.log('Search Text: ' + self.searchText());
         setTimeout(function() {
             self.getRecommendationsImages();
         }, 750);
@@ -88,7 +88,7 @@ function ViewModel() {
 
         });
 
-        /
+
         // var params = {
         //     q: self.searchText,
         //     k: tasteKidAPIKey,
