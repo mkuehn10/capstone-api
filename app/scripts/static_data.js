@@ -1,5 +1,3 @@
-// https://www.tastekid.com/api/similar?q=music:red+hot+chili+peppers%2C+movie:pulp+fiction%2C+book:the+elegant+universe&k=232795-APIProje-WARMTIA1&info=1
-
 var tastekid = {
    'Similar':{
       'Info':[

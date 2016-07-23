@@ -11,7 +11,9 @@
 body {
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: steelblue;
+    background-color: midnightblue;
+    color: brown;
+    font-weight: bold;
 }
 
 #input {
@@ -53,8 +55,8 @@ body {
 }
 
 .pic-container {
-    height: 150px;
-    width: 100px;
+    height: 300px;
+    width: 200px;
     margin-bottom: 5px;
     padding: 2px;
     margin-right: 3px;
@@ -62,13 +64,18 @@ body {
 }
 
 .pic-container img {
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
     object-fit: cover;
 }
 
 #more-button {
     display: block;
+}
+
+.display-tab {
+    display: none;
+    background-color: brown;
 }
 
     @media screen and (min-width: 768px) {
@@ -83,8 +90,8 @@ body {
             font-size: 14px;
         }
         .pic-container {
-            height: 175px;
-            width: 125px;
+            height: 300px;
+    width: 200px;
 
         }
 
@@ -99,8 +106,8 @@ body {
             max-height: 200px;
         }
         .pic-container {
-            height: 200px;
-            width: 160px;
+            height: 300px;
+    width: 200px;
         }
     }
 

@@ -4,7 +4,8 @@
   "dependencies": {
     "bootstrap": "~3.3.5",
     "jquery-ui": "^1.12.0",
-    "jasmine-core": "jasmine#^2.4.1"
+    "jasmine-core": "jasmine#^2.4.1",
+    "knockout": "^3.4.0"
   },
   "overrides": {
     "bootstrap": {
