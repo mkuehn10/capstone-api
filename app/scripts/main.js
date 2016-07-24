@@ -58,10 +58,10 @@ function ViewModel() {
     self.processEnter = function(data, event) {
         var keyCode = (event.which ? event.which : event.keyCode);
         console.log(keyCode);
-            if (keyCode === 13) {
-                self.searchRecommendations();
-                return false;
-            }
+        if (keyCode === 13) {
+            self.searchRecommendations();
+            return false;
+        }
         return true;
     };
 
@@ -127,12 +127,10 @@ function ViewModel() {
         })
         .done(function(result) {
             console.log(result);
-                // self.currentWikiInfo(result[2][0]);
                 self.currentWikiInfo(recommendation.wTeaser);
                 self.currentWikiURL(result[3][0]);
-                self.currentName(recommendation.name);
                 $('#tooltip').hide();
-                $('#tooltip').fadeIn('slow', function() {});
+                $('#tooltip').slideDown('slow');
             })
         .fail(function(jqXHR, error) {
             console.log('something went wrong');
@@ -141,7 +139,7 @@ function ViewModel() {
 
     self.closeToolTip = function(target) {
         console.log(target);
-        $('#tooltip').fadeOut('slow');
+        $('#tooltip').slideUp('slow');
     };
 
     self.requestRecommendations = function() {
@@ -156,7 +154,7 @@ function ViewModel() {
             q: self.searchText,
             k: tasteKidAPIKey,
             info: 1,
-            limit: 50
+            limit: 25
         };
 
         $.ajax({
