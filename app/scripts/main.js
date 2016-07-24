@@ -3,11 +3,6 @@ $('#menu-toggle').click(function(e) {
     $('#wrapper').toggleClass('toggled');
 });
 
-$('#in-menu-toggle').click(function(e) {
-    e.preventDefault();
-    $('#wrapper').toggleClass('toggled');
-});
-
 $('#new-search').click(function(e) {
     e.preventDefault();
     $('.display-tab').hide();
@@ -21,12 +16,12 @@ $('.tester').click(function() {
     $('.jasmine_html-reporter').toggle();
 });
 
-function RecommendedItem(name, type, imgURL, wikiInfo, wikiURL) {
+function RecommendedItem(name, type, imgURL, wTeaser, wikiURL) {
     var self = this;
     self.name = name;
     self.type = type;
     self.imgURL = ko.observable(imgURL);
-    self.wikiInfo = wikiInfo;
+    self.wTeaser = wTeaser;
     self.wikiURL = wikiURL;
 }
 
@@ -37,6 +32,8 @@ function ViewModel() {
     self.currentWikiInfo = ko.observable('');
     self.currentWikiURL = ko.observable('');
     self.currentName = ko.observable('');
+    self.searchBoxLimit = ko.observable(5);
+    self.closeSearchBoxLimit = ko.observable(1);
 
     self.availableCategories = ['Music', 'Movie', 'Show', 'Book', 'Author', 'Game'];
 
@@ -44,6 +41,14 @@ function ViewModel() {
         query: ko.observable(''),
         category: ko.observable('')
     }]);
+
+    self.searchBoxAllowed = ko.computed(function() {
+        return self.searchBox().length < self.searchBoxLimit();
+    });
+
+    self.closeButtonAllowed = ko.computed(function() {
+        return self.searchBox().length > self.closeSearchBoxLimit();
+    });
 
     self.recommendations = ko.observableArray([]);
 
@@ -62,13 +67,16 @@ function ViewModel() {
         if ($(window).width() < 768) {
             $('#menu-toggle').trigger('click');
         }
-
     };
 
     self.filterResults = function(category) {
         return ko.utils.arrayFilter(self.recommendations(), function(item) {
             return item.type === category.toLowerCase();
         });
+    };
+
+    self.formatTabs = function(category) {
+        return category + ' (' + self.filterResults(category).length + ')';
     };
 
     self.addSearchBox = function() {
@@ -113,7 +121,8 @@ function ViewModel() {
             dataType: 'jsonp'
         })
         .done(function(result) {
-            self.currentWikiInfo(result[2][0]);
+            // self.currentWikiInfo(result[2][0]);
+            self.currentWikiInfo(recommendation.wTeaser);
             self.currentWikiURL(result[3][0]);
             self.currentName(recommendation.name);
             $('#tooltip').hide();
@@ -124,10 +133,15 @@ function ViewModel() {
         });
     };
 
+    self.closeToolTip = function(target) {
+        console.log(target);
+        $('#tooltip').fadeOut('slow');
+    };
+
     self.requestRecommendations = function() {
         var results = tastekid.Similar.Results;
         $.each(results, function(n, result) {
-            self.recommendations.push(new RecommendedItem(result.Name, result.Type, '', '', ''));
+            self.recommendations.push(new RecommendedItem(result.Name, result.Type, '', result.wTeaser, ''));
         });
         // var params = {
         //     q: self.searchText,
@@ -185,7 +199,8 @@ function ViewModel() {
         // });
     };
 
-    self.imageClick = function(target) {
+    self.imageClick = function(target, event) {
+
         self.wikiInfoRequest(target);
     }
 }
