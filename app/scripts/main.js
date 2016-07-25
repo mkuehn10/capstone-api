@@ -77,7 +77,6 @@ function ViewModel() {
     /* processEnter - handler to accept the search when user presses Enter */
     self.processEnter = function(data, event) {
         var keyCode = (event.which ? event.which : event.keyCode);
-        console.log(keyCode);
         if (keyCode === 13) {
             self.searchRecommendations();
             return false;
@@ -158,7 +157,6 @@ function ViewModel() {
             dataType: 'jsonp'
         })
         .done(function(result) {
-            console.log(result);
                 self.currentWikiInfo(recommendation.wTeaser);
                 self.currentWikiURL(result[3][0]);
                 self.currentName(recommendation.name);
@@ -173,7 +171,6 @@ function ViewModel() {
     /* closeToolTip - click handler to close the open tooltip displaying
         the item description */
     self.closeToolTip = function(target) {
-        console.log(target);
         $('#tooltip').slideUp('slow');
     };
 
@@ -242,7 +239,6 @@ function ViewModel() {
             dataType: 'json'
         })
         .done(function(response) {
-            console.log(response.items[0].snippet.thumbnails.medium.url);
             recommendation.imgURL(response.items[0].snippet.thumbnails.medium.url);
         })
         .fail(function(jqXHR, error) {
