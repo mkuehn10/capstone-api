@@ -8,7 +8,7 @@
 body {
     padding-top: 0px;
     padding-bottom: 20px;
-    background-color: dimgray;
+    background-color: black;
     font-weight: bold;
 }
 
@@ -26,27 +26,27 @@ body {
     color: white;
 }
 
-.glyphicon-remove {
+/*.glyphicon-remove {
     color: red;
-}
+}*/
 
 .glyphicon-plus {
     transform: translateY(0.1em);
-    color: limegreen;
+    /*color: limegreen;*/
 }
 
-.add-term {
+/*.add-term {
     color: limegreen;
     font-weight: bold;
     font-size: 16px;
-}
+}*/
 
 h1.heading {
     font-size: 16px;
     display: inline-block;
 }
 
-.add-term:hover,
+/*.add-term:hover,
 .add-term:visited,
 .add-term:active,
 .add-term:focus,
@@ -54,7 +54,7 @@ h1.heading {
     color: limegreen;
     text-decoration: none;
     outline: none;
-}
+}*/
 
 .form-group {
     padding: 2px;
@@ -66,7 +66,7 @@ h1.heading {
 
 #tabs-search h1,
 #tabs h1 {
-    color: gold;
+    margin-top: 20px;
 }
 
 #form-id select.form-control {
@@ -165,8 +165,20 @@ form select {
     width: 100%;
     color: white;
 }
-
 #tooltip {
+    display: none;
+    color: black;
+    margin-top: 20px;
+}
+
+.close-tooltip {
+    /*position: absolute;
+    top: 8px;
+    right: 0px;*/
+    position: relative;
+    right: 0px;
+}
+/*#tooltip {
     background-color: gold;
     padding: 5px;
     color: black;
@@ -176,7 +188,7 @@ form select {
     position: relative;
     margin-top: 30px;
     font-family: sans-serif;
-}
+}*/
 
 body > div.jasmine_html-reporter {
     z-index: 1001;
@@ -194,7 +206,7 @@ body > div.jasmine_html-reporter {
     z-index: 1002;
 }
 
-#tooltip > p {
+/*#tooltip > p {
     padding-right: 10px;
 }
 
@@ -206,7 +218,7 @@ body > div.jasmine_html-reporter {
 
 #tooltip > button > span:hover {
     cursor: pointer;
-}
+}*/
 
 .heading {
     margin-top: 10px;
