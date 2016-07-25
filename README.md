@@ -7,6 +7,8 @@ Users may make recommendations using the categories of music, movies, tv shows, 
 
 Source code is in the app folder.  The dist folder contains the application after it was built using Gulp.
 
+![Image of App](https://mkuehn10.github.io/images/recommendation.png)
+
 ## Technologies Used
 * HTML
 * CSS
