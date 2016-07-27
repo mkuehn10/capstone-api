@@ -4,3 +4,4 @@ bower_components
 test/bower_components
 app/scripts/apikeys.txt
 bower.json.bak
+.idea
